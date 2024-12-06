@@ -26,4 +26,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: . # index.html이 저장소 루트에 있으므로 현재 디렉토리 배포
+          publish_dir: ./github-pages-deployment # index.html이 저장소 루트에 있으므로 현재 디렉토리 배포
