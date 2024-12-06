@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠팡이츠 - 더 좋은 식사의 시작</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!--폰트어썸-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    
+    <!--<script src="http://code.jquery.com/jquery-2.0.1.min.js"></script>제이쿼리는 하나만 있으면 된다--->
+
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.7.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.7.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.7.1/slick/slick-theme.css" />
+
+    <style>
+        * { box-sizing: border-box; }
+        /* 페이지 위쪽 영역 */
+        #nav{
+            padding: 20px 0 20px 0;
+            background: black;
+            border-bottom: 1px solid #E0E0E0 ;
+        }
+        #store-request{
+            float: right;
+            padding: 10px;
+            color: white;
+        }
+        /* 페이지 위쪽 영역 끝 */
+
+        /* 클릭 했을 때 */
+        a:hover{
+            color: #DBDBDB;
+        }
+        /* 클랙 했을 때 끝 */
+
+        /* 배경 동영상 */
+        #video-box{
+            width:100%;
+            height: 700px;
+            background: red;
+            position: relative;
+            top:0;
+            left:0;
+            overflow: hidden;
+            z-index: -99999;
+        }
+        .video-background {
+            background: #000;
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -99 !important;
+            overflow: hidden; /*이걸 사용하면 오른쪽 하단에 유튜브 글자가 나오지 않는다.*/
+        }
+        .video-foreground, .video-background iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .video-foreground h1{
+            position: absolute !important;
+            left: 400px !important;
+            top: 1000px !important;
+            z-index: 100000 !important;
+            color: white !important;
+        }
+        /* 배경 동영상 끝 */
+
+        /* 슬라이더 위쪽 글씨 */
+        #headslider{
+            padding: 50px 0 20px 0;
+            font-size: 30px;
+            text-align: center;
+        }
+        /* 슬라이더 위쪽 글씨 끝 */
+
+        /* 슬라이더 */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .slick-prev:before, .slick-next:before {
+            color: #444444;
+        }
+        .slider {
+            width: 60%;
+            margin: 0px auto;
+        }
+        .slider .slick-slide {
+            margin: 10px;
+        }
+        /* 슬라이더 끝 */
+
+        /* qr코드 */
+        #qrcode{
+            padding: 30px 0 30px 0;
+        }
+        #qr, #contents-box, #box-slider{
+            background-color: #F3F1F1;
+        }
+        /* qr코드 끝 */
+
+        /* 쿠팡이츠 입점 신청 */
+        .text{
+            font-size: 32px; 
+            font-weight: 700;
+            margin-bottom: 20px;
+            width: 100%;
+            position: relative;
+            padding-bottom: 50px;
+        }
+        .col-sm-6{
+            padding: 50px 0 50px 0;
+        }
+        #customer{
+            text-align: center;
+        }
+        /* 쿠팡이츠 입점 신청 끝 */
+
+        /* 콘텐츠 박스 */
+        .container{
+            padding: 50px 0 50px 0;
+        }
+        .col-sm-4, .col-sm-6{
+            padding: 70px;
+            overflow: hidden;
+        }
+        .col-sm-4 .caption{
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            color: white;
+        }
+        .col-sm-4{
+            border: 10px solid #f2f0f0;
+        }
+        .btn{
+            background-color: rgb(21, 167, 235) !important;
+            padding: 15px 30px !important;
+            border-radius: 10px !important;
+        }
+        #contents-box .col-sm-4{
+            height: 300px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #contents-box{
+            padding: 60px 0 15px 0;
+        }
+        #contents-box .col-sm-4:nth-child(1){
+            background-image: url(img/food01.png);
+        }
+        #contents-box .col-sm-4:nth-child(2){
+            background-image: url(img/food02.jpeg);
+        }
+        #contents-box .col-sm-4:nth-child(3){
+            background-image: url(img/food3.jpg);
+        }
+        /* 컨텐츠 박스 끝 */
+
+        /* footer */
+        #footer{
+            background: #091020;
+        }
+        #footer .fab{
+            display: inline-block;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 20px;
+        }
+        #copyright{
+            padding: 70px 0 70px 0;
+            color: white;
+        }
+        /* footer 끝 */
+        
+        @media (min-aspect-ratio: 16/9) {
+            .video-foreground { height: 300%; top: -100%; }
+        }
+        @media (max-aspect-ratio: 16/9) {
+            .video-foreground { width: 300%; left: -100%; }
+        }
+        @media screen and (max-width: 767px){
+            #video h1{
+                left: 10px !important;
+                font-size: 30px;
+            }
+        }
+    </style>
+<script>
+    $( document ).ready( function() {
+      $( '.slider' ).slick( {
+        autoplay: true,
+        autoplaySpeed: 1000,
+        slidesToShow: 7,
+        slidesToScroll: 1,
+        pauseOnFocus: false, 
+        pauseOnHover: false,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 3,
+            }
+          },
+          {
+            breakpoint: 576,
+            settings: {
+              slidesToShow: 2,
+            }
+          }
+        ]
+
+      } );
+    } );
+</script>    
+</head>
+<body>
+    <!--nav-->
+    <div id="nav" class="container-fluid text-center">
+        <div id="container" style="padding: 0 !important;">
+            <div id="store-request">
+                <i class="fas fa-hands-helping"></i>
+                <span>
+                    구매/제휴문의
+                </span>
+                <i class="fas fa-store"></i>
+                <span>
+                    입점 상담신청
+                </span>
+            </div>
+            <img id="logo" src="img/logo.png">
+        </div>
+    </div>
+    <!--nav 끝-->
+
+    <!--video-->
+    <div id="video-box">
+        <div id="video" class="container-fluid video-background">
+            <div class="video-foreground">
+                <iframe src="https://www.youtube.com/embed/hfWZ1DlLnqU?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=hfWZ1DlLnqU&mute=1" frameborder="0" allowfullscreen></iframe>
+                <h1>
+                    <p>
+                        쿠팡이츠는 <br>
+                        100% 한집배달 <br>
+                    </p>
+                    <p>
+                        맛있는 음식을 <br>
+                        빠르고 편하게
+                    </p>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!--video 끝-->
+
+    <!--slider-->
+    <div id="box-slider">
+        <h1 id="headslider">
+            매주 다양한 인기브랜드 할인을 만나보세요!
+        </h1>
+        <div class="slider">
+            <div><img src="img/01.png" alt=""></div>
+            <div><img src="img/02.png" alt=""></div>
+            <div><img src="img/03.png" alt=""></div>
+            <div><img src="img/04.png" alt=""></div>
+            <div><img src="img/05.png" alt=""></div>
+            <div><img src="img/06.png" alt=""></div>
+            <div><img src="img/07.png" alt=""></div>
+            <div><img src="img/08.png" alt=""></div>
+            <div><img src="img/09.png" alt=""></div>
+            <div><img src="img/10.png" alt=""></div>
+            <div><img src="img/11.png" alt=""></div>
+            <div><img src="img/12.png" alt=""></div>
+            <div><img src="img/13.png" alt=""></div>
+            <div><img src="img/14.png" alt=""></div>
+            <div><img src="img/15.png" alt=""></div>
+          </div>
+    </div>
+    <!--slider 끝-->
+
+    <!--qr code-->
+    <div id="qr" class="container-fluid">
+        <div class="container text-center">
+            <a href="#" class="btn btn-primary">
+                지금 설치하고 할인받기
+            </a>
+            <br>
+            <img id="qrcode" src="https://chart.apis.google.com/chart?cht=qr&chs=170x170&chl=https://share.coupangeats.com/" alt="QRcode">
+            <p>
+                * PC로 접속하신 경우, QR코드를 통해 쿠팡이츠 앱을 설치 하실 수 있습니다.
+            </p>
+            <p>
+                * 할인 금액은 주차 별로 상이할 수 있습니다
+            </p>
+        </div>  
+    </div>
+    <!--qr code 끝-->
+
+    <!--쿠팡이츠 입점 신청-->
+    <div id="store" class="container text-center"> <!--좌우에서 여백을 줄때는 container가 좋다-->
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="text">
+                    사장님, 쿠팡이츠로 <br>
+                    매출을 늘려보세요!
+                </h2>
+                <a href="#" class="btn btn-primary">
+                    쿠팡이츠 입점 신청하기
+                </a>
+            </div>
+            <div class="col-sm-6">
+                <h2 class="text">
+                    틈나는 시간, <br>
+                    배달을 시작해보아요!
+                </h2>
+                <a href="#" class="btn btn-primary">
+                    배달 파트너 신청하기
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="text" style="float: left;">
+                    지금 쿠팡이츠로 <br>
+                    주문을 해야하는 이유
+                </h2>
+                <p>
+                    쿠팡이츠는 한번에 한집배달이 원칙! <br>
+                    블루리본부터 이츠오리지널까지! <br>
+                    줄 서먹는 맛집도 당연히 한집배달! <br>
+                    이젠, 맛집도 쿠팡이츠로 주문하세요.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <div class="video-box">
+                    <iframe width="430" height="250" src="https://www.youtube.com/embed/gS65eGciMfc?controls=0&showinfo=0&rel=0&autoplay=0&loop=1&playlist=gS65eGciMfc&mute=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--쿠팡이츠 입점 신청 끝-->
+
+    <!--컨텐츠 박스-->
+    <div id="contents-box" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="caption">
+                        <h3>
+                            음식이 뜨거워요?!<br>
+                            음식이 식기전에 도착!
+                        </h3>
+                        <p>
+                            쿠팡이츠는 한번에 한집배달!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="caption">
+                        <h3>
+                            어디쯤 왔는지<br>
+                            마음 졸이고 있나요?
+                        </h3>    
+                        <p>
+                            쿠팡이츠는 실시간 배달위치 확인!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="caption">
+                        <h3>                    
+                            실패없는 맛집탐험<br>
+                            치타배달
+                        </h3>
+                        <p>
+                            음식 조리시간, 배달시간, 맛까지 검증!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--컨텐츠 박스 끝-->
+
+    <!--고객센터 문의-->
+    <div id="customer" class="container text-center">
+        <h2>
+            고객센터 문의
+        </h2>
+        <p>
+            eatshelp@coupang.com
+        </p>
+        <p>
+            구매 및 제휴 문의 <br>
+            할인쿠폰 구매 문의: eats_bd@coupang.com <br>
+            마케팅/제휴 문의: eats@coupang.com
+        </p>
+        <a href="#" class="btn btn-primary">
+            기업용 쿠팡이츠 쿠폰 구매 신청하기
+        </a>
+    </div>
+    <!--고객센터 문의 끝-->
+
+    <!--footer-->
+    <div id="footer" class="container-fluid text-center"> 
+        <div class="container">
+            <div id="sns">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+            <div id="copyright">
+                쿠팡(주) | 대표이사: 박대준<br>
+            사업자 등록번호: 120-88-00767  |  통신판매업신고: 2017-서울 송파-0680<br>
+            서울시 송파구 송파대로 570
+            </div>
+        </div>
+    </div>
+    <!--footer 끝-->
+</body>
+</html>
