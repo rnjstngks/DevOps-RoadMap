@@ -7,7 +7,7 @@ on:
     branches:
       - main # main 브랜치에서 푸시될 때만 실행
     paths:
-      - "index.html" # index.html 파일 변경 감지
+      - "github-pages-deployment/index.html" # index.html 파일 변경 감지
 
 jobs:
   deploy:
