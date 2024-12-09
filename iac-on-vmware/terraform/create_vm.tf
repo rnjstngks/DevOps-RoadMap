@@ -1,5 +1,5 @@
 resource "vsphere_virtual_machine" "test_vm" {
-  name             = "test_terraform"
+  name             = "<가상머신의 이름>"
   resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
   datastore_id     = data.vsphere_datastore.datastore.id
   num_cpus         = 2
@@ -16,14 +16,14 @@ resource "vsphere_virtual_machine" "test_vm" {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
         linux_options {
-            host_name = "test-terraform"
-            domain = "smrc.klab-a"
+            host_name = "<가상머신의 호스트명>"
+            domain = "<가상머신의 도메인 명>"
         }
         network_interface {
-            ipv4_address = "10.10.91.4"
+            ipv4_address = "<가상머신의 IP>"
             ipv4_netmask = 24
       }
-      ipv4_gateway = "10.10.91.1"
+      ipv4_gateway = "<사용되는 네트워크 어댑터의 게이트웨이 주소>"
     }
   }
 }
