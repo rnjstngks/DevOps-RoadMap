@@ -1,0 +1,19 @@
+# 파일 업로드, 압축 해제, 권한 설정
+
+- name: Upload website tarball
+  copy:
+    src: /path/to/website.tar.gz  # 로컬에서 업로드할 파일 경로
+    dest: /tmp/website.tar.gz     # 서버에서의 대상 경로
+
+- name: Extract website
+  unarchive:
+    src: /tmp/website.tar.gz      # 서버에서 압축을 풀 파일 경로
+    dest: /var/www/html/          # 압축을 풀 대상 경로
+    remote_src: yes               # 파일이 서버에 이미 있는 경우
+
+- name: Set permissions for website
+  file:
+    path: /var/www/html/          # 권한 설정 대상 디렉토리
+    state: directory              # 디렉토리 상태 확인
+    mode: '0755'                  # 디렉토리 권한 (읽기, 쓰기, 실행 가능)
+    recurse: yes                  # 하위 디렉토리 및 파일에 재귀적으로 적용

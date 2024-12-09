@@ -1,0 +1,24 @@
+# 패키지 업데이트, 유틸리티 설치, 보안 서비스 설정(Fail2Ban)
+
+- name: Update all Packages
+  apt:
+    update_cache: yes # 패키지 목록을 업데이트
+    upgrade: dist # 모든 패키지를 최신 상태로 업그레이드
+  when: ansible_os_family == "Debian" # Debian 계열에서만 실행
+
+- name: Install basic utilities
+  apt:
+    name:
+      - vim # 텍스트 편집기
+      - curl # 데이터 전송 도구
+      - git # 버전 관리 시스템
+      - fail2ban # 보안 서비스
+    state: present # 설치 상태 유지
+  when: ansible_os_family == "Debian" # Debian 계열에서만 실행
+
+- name: Ensure fail2ban service is running
+  service:
+    name: fail2ban # 서비스 이름
+    state: started # 서비스 시작
+    enabled: yes # 부팅 시 자동 시작
+

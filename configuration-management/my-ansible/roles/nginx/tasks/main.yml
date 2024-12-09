@@ -1,0 +1,23 @@
+# Nginx 설치, 설정 파일 배포, 서비스 관리
+
+- name: Install NGINX
+  apt:
+    name: nginx # 설치할 패키지 이름
+    state: present # 설치 상태 유지
+  when: ansible_os_family == "Debian" # Debian 계열에서만 실행
+
+- name: Ensure NGINX is running
+  service:
+    name: nginx # 서비스 이름
+    state: started # 서비스 시작
+    enabled: yes # 부팅 시 자동 시작
+
+- name: Changes NGINX index Template
+  template:
+    src: index.html # 템플릿 파일 경로 (Ansible에서 로컬에 위치)
+    dest: /var/www/html # 서버의 대상 경로
+
+- name: Reload NGINX
+  service:
+    name: nginx # 서비스 이름
+    state: restarted # 서비스 시작

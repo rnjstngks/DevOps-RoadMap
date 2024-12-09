@@ -1,0 +1,24 @@
+- name: Setup base server
+  hosts: base
+  become: yes
+  roles:
+    - { role: base, tags: ["base"] }
+
+- name: Setup nginx server
+  hosts: nginx
+  become: yes
+  roles:
+    - { role: nginx, tags: ["nginx"] }
+
+- name: Setup app server
+  hosts: app
+  become: yes
+  roles:
+    - { role: app, tags: ["app"] }
+
+- name: Setup ssh server
+  hosts: ssh
+  become: yes
+  roles:
+    - { role: ssh, tags: ["ssh"] }
+
