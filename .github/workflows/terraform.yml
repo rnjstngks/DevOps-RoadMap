@@ -10,6 +10,8 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-22.04
+    env:
+      working-directory: node.js-service-deployment/terraform
 
     steps:
       - name: Checkout repository
