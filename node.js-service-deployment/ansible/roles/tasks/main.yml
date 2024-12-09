@@ -1,0 +1,42 @@
+- name: Update Packages # apt update
+  apt:
+    update_cache: yes # 패키지 목록을 업데이트
+    upgrade: dist # 모든 패키지를 최신 상태로 업그레이드
+  when: ansible_os_family == "Debian" # Debian 계열에서만 실행
+
+- name: Install utilities # 기본 패키지 설치
+  apt:
+    name:
+      - vim # 텍스트 편집기
+      - curl # 데이터 전송 도구
+      - git # 버전 관리 시스템
+      - build-essential # Node.js 패키지 빌드 및 설치에 필요한 컴파일러 관련 도구
+    state: present # 설치 상태 유지
+
+- name: Install Node.js # Node.js 설치
+  shell: |
+    curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+    sudo -E bash nodesource_setup.sh
+    sudo apt-get install -y nodejs
+
+- name: Create a directory for the web app  # 웹 애플리케이션 디렉토리 생성
+  file:
+    path: /var/www/my-node-app       # 생성할 디렉토리 경로
+    state: directory                 # 디렉토리가 존재하도록 보장
+    mode: '0755'                     # 디렉토리 권한 설정 (읽기/쓰기/실행 권한)
+
+- name: Change an example index.html  # 웹 애플리케이션의 index.html 파일 교체
+  copy:
+    src: index.html
+    dest: /var/www/my-node-app/index.html  # 생성할 index.html 파일 경로
+      
+- name: Create a simple Node.js server script # Node.js 서버 스크립트 생성
+  copy:
+    src: server.js
+    dest: /var/www/my-node-app/server.js  # 생성할 server.js 파일 경로
+
+- name: Start the Node.js server  # Node.js 서버 실행
+  shell: |
+    nohup node /var/www/my-node-app/server.js &  # Node.js 서버를 백그라운드에서 실행
+  args:
+    executable: /bin/bash  # 실행할 쉘을 /bin/bash로 명시

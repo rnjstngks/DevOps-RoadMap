@@ -1,0 +1,5 @@
+- name: Setup app server
+  hosts: app
+  become: yes
+  roles:
+    - { role: app, tags: ["app"] }
