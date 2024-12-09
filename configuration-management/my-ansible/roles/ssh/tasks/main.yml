@@ -2,16 +2,16 @@
 
 - name: Create .ssh directory
   file:
-    path: /home/{{ ansible_user }}/.ssh  # .ssh 디렉토리 생성 경로
+    path: /root/.ssh  # .ssh 디렉토리 생성 경로
     state: directory                    # 디렉토리 생성
     mode: '0700'                        # 디렉토리 권한 (소유자만 접근 가능)
-    owner: "{{ ansible_user }}"         # 디렉토리 소유자
-    group: "{{ ansible_user }}"         # 디렉토리 소유 그룹
+    owner: root         # 디렉토리 소유자
+    group: root         # 디렉토리 소유 그룹
 
 - name: Upload public SSH key
   copy:
-    src: /path/to/public_key.pub        # 로컬의 공개 키 파일 경로
-    dest: /home/{{ ansible_user }}/.ssh/authorized_keys  # 서버의 대상 경로
+    src: id_ed25519.pub        # 로컬의 공개 키 파일 경로
+    dest: /root/.ssh/authorized_keys  # 서버의 대상 경로
     mode: '0600'                        # 파일 권한 (소유자만 읽기/쓰기)
-    owner: "{{ ansible_user }}"         # 파일 소유자
-    group: "{{ ansible_user }}"         # 파일 소유 그룹
+    owner: root         # 파일 소유자
+    group: root         # 파일 소유 그룹
