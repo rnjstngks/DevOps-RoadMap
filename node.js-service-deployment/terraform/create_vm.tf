@@ -29,12 +29,6 @@ resource "vsphere_virtual_machine" "test_vm" {
   }
 
   provisioner "remote-exec" {
-    inline = [
-      "mkdir -p /root/.ssh",
-      "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJzm6eyYXwDZR8qmjExHCwMDoeb3DVG/wbl8wqR+IklX root@S2300289' >> /root/.ssh/authorized_keys",
-      "chmod 600 /root/.ssh/authorized_keys",
-      "chmod 700 /root/.ssh"
-    ]
 
     connection {
       type     = "ssh"
@@ -42,5 +36,12 @@ resource "vsphere_virtual_machine" "test_vm" {
       password = "1234"
       host     = "10.10.91.4"
     }
+    
+    inline = [
+      "mkdir -p /root/.ssh",
+      "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJzm6eyYXwDZR8qmjExHCwMDoeb3DVG/wbl8wqR+IklX root@S2300289' >> /root/.ssh/authorized_keys",
+      "chmod 600 /root/.ssh/authorized_keys",
+      "chmod 700 /root/.ssh"
+    ]
   }
 }
