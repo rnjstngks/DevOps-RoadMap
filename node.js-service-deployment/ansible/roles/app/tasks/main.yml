@@ -37,6 +37,6 @@
 
 - name: Start the Node.js server  # Node.js 서버 실행
   shell: |
-    nohup node /var/www/my-node-app/server.js &  # Node.js 서버를 백그라운드에서 실행
+    nohup node /var/www/my-node-app/server.js &  
   args:
     executable: /bin/bash  # 실행할 쉘을 /bin/bash로 명시
