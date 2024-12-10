@@ -1,8 +1,8 @@
-- name: Update Packages # apt update
-  apt:
-    update_cache: yes # 패키지 목록을 업데이트
-    upgrade: dist # 모든 패키지를 최신 상태로 업그레이드
-  when: ansible_os_family == "Debian" # Debian 계열에서만 실행
+#- name: Update Packages # apt update
+#  apt:
+#    update_cache: yes # 패키지 목록을 업데이트
+#    upgrade: dist # 모든 패키지를 최신 상태로 업그레이드
+#  when: ansible_os_family == "Debian" # Debian 계열에서만 실행
 
 - name: Install utilities # 기본 패키지 설치
   apt:
