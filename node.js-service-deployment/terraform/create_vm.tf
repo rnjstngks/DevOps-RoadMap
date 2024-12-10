@@ -30,7 +30,7 @@ resource "vsphere_virtual_machine" "test_vm" {
 
   provisioner "remote-exec" {
 
-    connection {
+    connection { # connection 해당 옵션이 inline 보다 앞에와야지 ssh 접속이 원활하게 됩니다.
       type     = "ssh"
       user     = "root"
       password = "1234"
@@ -39,7 +39,7 @@ resource "vsphere_virtual_machine" "test_vm" {
     
     inline = [
       "mkdir -p /root/.ssh",
-      "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJzm6eyYXwDZR8qmjExHCwMDoeb3DVG/wbl8wqR+IklX root@S2300289' >> /root/.ssh/authorized_keys",
+      "echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP57+TY2n0a0bcZqZ0I4VfD2lsKSHpcLNWW+bHWPlhYq han@S2300289' >> /root/.ssh/authorized_keys",
       "chmod 600 /root/.ssh/authorized_keys",
       "chmod 700 /root/.ssh"
     ]
