@@ -9,7 +9,7 @@ on:
 
 jobs:
   terraform:
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted # 내 Window 환경에서 Terraform 실행
 
     steps:
       - name: Checkout repository
