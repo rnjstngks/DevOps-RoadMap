@@ -1,0 +1,12 @@
+[Unit]
+Description=Node.js Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /var/www/my-node-app/server.js
+Restart=always
+User=root
+Environment=PORT=80
+
+[Install]
+WantedBy=multi-user.target

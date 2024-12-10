@@ -35,8 +35,22 @@
     src: server.js
     dest: /var/www/my-node-app/server.js  # 생성할 server.js 파일 경로
 
-- name: Start the Node.js server  # Node.js 서버 실행
-  shell: |
-    nohup node /var/www/my-node-app/server.js &  
-  args:
-    executable: /bin/bash  # 실행할 쉘을 /bin/bash로 명시
+- name: Copy Node.js service
+  copy:
+    src: node-server.service
+    dest: /etc/systemd/system/node-server.service
+
+- name: Reload systemd daemon
+  command: systemctl daemon-reload
+
+- name: Start Node.js service
+  service:
+    name: node-server
+    state: started
+    enabled: true
+
+# - name: Start the Node.js server  # Node.js 서버 실행
+#   shell: |
+#     nohup node /var/www/my-node-app/server.js &  
+#   args:
+#     executable: /bin/bash  # 실행할 쉘을 /bin/bash로 명시
