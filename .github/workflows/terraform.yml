@@ -22,8 +22,12 @@ jobs:
 
       - name: Terraform Init
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/node.js-service-deployment/terraform
-        run: terraform init
+        run: |
+          set -e
+          terraform init
 
       - name: Terraform Apply
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/node.js-service-deployment/terraform
-        run: terraform apply -auto-approve
+        run: |
+          set -e
+          terraform apply -auto-approve
