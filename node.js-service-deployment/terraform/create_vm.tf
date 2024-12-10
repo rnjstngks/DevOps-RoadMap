@@ -24,7 +24,7 @@ resource "vsphere_virtual_machine" "test_vm" {
             ipv4_netmask = 24
       }
       ipv4_gateway = "10.10.91.1"
-      dns_server_list = "10.10.92.201"
+      dns_server_list = ["10.10.92.201"] # 리스트 형태로 해주어야 IP로 입력 가능
     }
   }
 }
