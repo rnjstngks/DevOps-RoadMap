@@ -4,15 +4,18 @@ FROM node:22
 # 작업 디렉터리 생성
 WORKDIR /usr/src/app
 
-# 의존성 복사
-COPY package*.json ./
+# app.js, .env 파일 복사
+COPY  app.js /usr/src/app/app.js
+COPY  .env /usr/src/app/.env
+
+# package.json 생성 및 기본값 설정
+RUN npm init -y
 
 # 의존성 설치
-RUN npm install
+RUN npm instal
 
-# 소스 코드 복사
-COPY . .
+# 애플리케이션 포트 노출
+EXPOSE 3000
 
 # 컨테이너 실행 시 명령어
-EXPOSE 3000
 CMD ["node", "app.js"]
