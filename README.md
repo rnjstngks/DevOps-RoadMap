@@ -10,3 +10,4 @@
 6. [**Configuration Management**](https://roadmap.sh/projects/configuration-management) 과정의 [**Solution**](configuration-management) 입니다.
 7. [**IaC on DigitalOcean**](https://roadmap.sh/projects/iac-digitalocean) 과정의 [**Solution**](iac-on-vmware) 입니다.
 8. [**Node.js Service Deployment**](https://roadmap.sh/projects/nodejs-service-deployment) 과정의 [**Solution**](node.js-service-deployment) 입니다.
+9. [**Dockerized Service**](https://roadmap.sh/projects/dockerized-service-deployment) 과정의 [**Solution**](dockerized-service) 입니다.
