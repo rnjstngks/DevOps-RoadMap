@@ -2,6 +2,8 @@
 
 앞서 configuration-management와 iac-on-vmware에서 공부했던 내용을 바탕으로 구성 및 설정해보도록 하겠습니다.
 
+먼저
+
 Github Action을 가상환경에서 동작하는 것이 아닌, 자신의 노트북 환경에서 돌리기 위해 Github Action 설정을 변경해주도록 하겠습니다.
 
 Settings -> Actions -> Runners -> New self-hosted runner
