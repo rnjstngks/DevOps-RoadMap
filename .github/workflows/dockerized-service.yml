@@ -22,6 +22,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
+      working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/dockerized-service/Dockerfile
       run: |
         docker build -t rnjstngks/dockerized-service:v1 .
         docker push rnjstngks/dockerized-service:v1
