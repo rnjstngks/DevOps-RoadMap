@@ -8,11 +8,8 @@ WORKDIR /usr/src/app
 COPY  app.js /usr/src/app/app.js
 COPY  .env /usr/src/app/.env
 
-# package.json 생성 및 기본값 설정
-RUN npm init -y
-
 # 의존성 설치
-RUN npm instal
+RUN npm install express dotenv
 
 # 애플리케이션 포트 노출
 EXPOSE 3000
