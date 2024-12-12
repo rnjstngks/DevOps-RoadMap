@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    image: rnjstngks/todo-api:v1
+    ports: 
+      - "4000:4000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
