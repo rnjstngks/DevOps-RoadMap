@@ -12,4 +12,3 @@ services:
     image: mongo:latest
     volumes:
       - mongo-data:/data/db
-      
