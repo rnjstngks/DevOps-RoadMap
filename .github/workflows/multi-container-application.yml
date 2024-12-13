@@ -27,6 +27,10 @@ jobs:
       run: |
         docker build -t rnjstngks/todo-api:v1 .
         docker push rnjstngks/todo-api:v1
+
+    - name: Transfer docker-compose file
+      working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/multi-container-application/
+      run: |
         scp docker-compose.yml root@10.10.91.4:/root
 
     - name: SSH to server and deploy
