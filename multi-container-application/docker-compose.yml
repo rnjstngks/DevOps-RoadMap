@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   api:
     image: rnjstngks/todo-api:v1
@@ -12,3 +10,6 @@ services:
     image: mongo:latest
     volumes:
       - mongo-data:/data/db
+
+volumes:
+  mongo-data:
