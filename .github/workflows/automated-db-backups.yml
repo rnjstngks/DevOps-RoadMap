@@ -34,7 +34,7 @@ jobs:
           terraform apply -auto-approve
 
       - name: Wait for VM to initialize
-        run: sleep 180
+        run: sleep 120
 
       - name: Run Ansible Playbook
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/automated-db-backups/ansible
