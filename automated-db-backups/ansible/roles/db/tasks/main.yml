@@ -16,8 +16,8 @@
 
 # APT 캐시를 업데이트하여 새로 추가된 리포지토리를 인식합니다.
 - name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: yes
+  apt:
+    upgrade: yes
 
 # MongoDB 패키지를 설치합니다.
 - name: Install MongoDB
