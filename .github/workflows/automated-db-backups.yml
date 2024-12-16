@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "automated-db-backups/*"
+      - "automated-db-backups/ansible/*"
+      - "automated-db-backups/terraform/*"
 
 jobs:
   terraform:
