@@ -3,3 +3,15 @@
   become: yes
   roles:
     - { role: db, tags: ["db"] }
+
+- name: Setup insert db data
+  hosts: data
+  become: yes
+  roles:
+    - { role: data, tags: ["data"] }
+
+- name: Setup backup db data
+  hosts: backup
+  become: yes
+  roles:
+    - { role: backup, tags: ["backup"] }
