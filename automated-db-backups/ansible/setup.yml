@@ -1,0 +1,5 @@
+- name: Setup db server
+  hosts: db
+  become: yes
+  roles:
+    - { role: db, tags: ["db"] }

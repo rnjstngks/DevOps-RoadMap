@@ -1,0 +1,35 @@
+---
+# MongoDB 설치 및 설정을 위한 Ansible tasks 파일
+
+# MongoDB의 GPG 키를 다운로드하고 dearmor 과정을 통해 파일로 저장합니다.
+- name: Download MongoDB GPG key and dearmor
+  ansible.builtin.shell: |
+    curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+    gpg --dearmor -o /usr/share/keyrings/mongodb-server-8.0.gpg
+  args:
+    creates: /usr/share/keyrings/mongodb-server-8.0.gpg
+
+# MongoDB 공식 리포지토리를 APT 소스에 추가합니다.
+- name: Add MongoDB repository
+  ansible.builtin.apt_repository:
+    repo: "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse"
+    state: present
+    filename: mongodb-org
+
+# APT 캐시를 업데이트하여 새로 추가된 리포지토리를 인식합니다.
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+# MongoDB 패키지를 설치합니다.
+- name: Install MongoDB
+  ansible.builtin.apt:
+    name: mongodb-org
+    state: present
+
+# MongoDB 서비스를 활성화하고 시작합니다.
+- name: Enable and start MongoDB service
+  ansible.builtin.service:
+    name: mongod
+    state: started
+    enabled: yes

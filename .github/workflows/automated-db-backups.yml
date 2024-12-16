@@ -1,0 +1,40 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "automated-db-backups/*"
+
+jobs:
+  terraform:
+    runs-on: self-hosted # 내 Window 환경에서 Terraform 실행
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.10.1
+
+      - name: Terraform Init
+        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/automated-db-backups/terraform
+        run: |
+          set -e
+          terraform init
+
+      - name: Terraform Apply
+        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/automated-db-backups/terraform
+        run: |
+          set -e
+          terraform apply -auto-approve
+
+      - name: Wait for VM to initialize
+        run: sleep 180
+
+      - name: Run Ansible Playbook
+        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/automated-db-backups/ansible
+        run: ansible-playbook -i inventory.ini setup.yml --tags "db"
