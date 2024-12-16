@@ -5,7 +5,7 @@
 - name: Download MongoDB GPG key and dearmor
   ansible.builtin.shell: |
     curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
-    gpg --dearmor -o /usr/share/keyrings/mongodb-server-8.0.gpg
+    gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
   args:
     creates: /usr/share/keyrings/mongodb-server-8.0.gpg
 
