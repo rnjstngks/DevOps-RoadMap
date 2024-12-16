@@ -33,7 +33,7 @@ resource "vsphere_virtual_machine" "test_vm" {
       type     = "ssh"
       user     = "root"
       password = "1234"
-      host     = "10.10.99.4"
+      host     = "10.10.99.7"
     }
     
     inline = [
