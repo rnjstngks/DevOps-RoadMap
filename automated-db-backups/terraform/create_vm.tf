@@ -6,7 +6,7 @@ resource "vsphere_virtual_machine" "test_vm" {
   memory           = 4096
   guest_id         = "ubuntu64Guest"
   network_interface {
-    network_id = data.vsphere_network.network_91.id
+    network_id = data.vsphere_network.network_99.id
   }
   disk {
     label = "disk"
