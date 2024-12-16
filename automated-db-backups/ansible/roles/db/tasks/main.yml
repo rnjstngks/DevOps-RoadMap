@@ -11,10 +11,8 @@
 
 # MongoDB 공식 리포지토리를 APT 소스에 추가합니다.
 - name: Add MongoDB repository
-  ansible.builtin.apt_repository:
-    repo: "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse"
-    state: present
-    filename: mongodb-org
+  ansible.builtin.shell: |
+    echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
 
 # APT 캐시를 업데이트하여 새로 추가된 리포지토리를 인식합니다.
 - name: Update apt cache
