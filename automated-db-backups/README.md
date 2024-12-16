@@ -4,7 +4,7 @@
 
 **1. 가상머신 생성**
 
-- Terraform을 사용하여 가상머신을 생성 해줍니다. 해당 과정은 [**Solution**](iac-on-vmware) 이곳을 참조하여 생성해줍니다.
+- Terraform을 사용하여 가상머신을 생성 해줍니다. 해당 과정은 (iac-on-vmware) 이곳을 참조하여 생성해줍니다.
 
 **2. ansible 사용하여 MongoDB 서비스 설치**
 
