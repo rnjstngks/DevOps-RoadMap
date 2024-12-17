@@ -28,7 +28,9 @@
 # MongoDB 패키지를 설치합니다.
 - name: Install MongoDB
   ansible.builtin.apt:
-    name: mongodb-org
+    name: 
+      - mongodb-org
+      - mongodb-clients
     state: present
 
 # MongoDB 서비스를 활성화하고 시작합니다.
