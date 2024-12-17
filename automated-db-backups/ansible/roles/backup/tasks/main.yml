@@ -8,26 +8,13 @@
     state: directory   # 디렉터리 상태를 유지
     mode: '0755'       # 권한 설정: 소유자 읽기/쓰기/실행, 그룹 및 다른 사용자 읽기/실행
 
-- name: Backup MongoDB database to /var/backups/mongo
-  # mongodump 명령어를 실행해 MongoDB 데이터를 백업
-  command: >
-    mongodump --db jsondb --out /var/backups/mongo/$(date +%F-%H-%M)
-  args:
-    creates: "/var/backups/mongo/$(date +%F-%H-%M)"
-  # 명령어 설명:
-  # - `mongodump`: MongoDB 데이터를 백업하는 도구
-  # - `--db mydatabase`: 백업할 데이터베이스 이름 지정
-  # - `--out /var/backups/mongo/`: 백업 파일이 저장될 경로
-  # - `$(date +%F-%H-%M)`: 날짜와 시간을 포함해 디렉터리 이름을 생성
-  # - `creates`: 이미 해당 파일/디렉터리가 존재하면 작업을 건너뜀
-
 - name: Add cron job to backup MongoDB every 12 hours
   # MongoDB 백업 작업을 크론 잡으로 등록
   cron:
     name: "MongoDB Backup"
     minute: "0"             # 매시 0분에 실행
     hour: "*/12"            # 12시간마다 실행 (오전 0시, 오후 12시 등)
-    job: "mongodump --db mydatabase --out /var/backups/mongo/$(date +%F-%H-%M)"
+    job: "mongodump --out /var/backups/mongo/$(date +%Y-%m-%d) --db jsondb "
   # 명령어 설명:
   # - 크론 잡은 정해진 시간에 명령어를 자동으로 실행
   # - `mongodump`를 통해 주기적으로 MongoDB를 백업

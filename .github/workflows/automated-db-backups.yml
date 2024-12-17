@@ -36,6 +36,10 @@ jobs:
       - name: Wait for VM to initialize
         run: sleep 120
 
+  ansible:
+    runs-on: self-hosted # 내 Window 환경에서 Terraform 실행        
+
+    steps:
       - name: Run Ansible Playbook Install DB
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/automated-db-backups/ansible
         run: ansible-playbook -i inventory.ini setup.yml --tags "db"
