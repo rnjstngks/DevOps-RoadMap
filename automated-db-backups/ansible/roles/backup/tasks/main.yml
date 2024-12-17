@@ -11,7 +11,7 @@
 - name: Backup MongoDB database to /var/backups/mongo
   # mongodump 명령어를 실행해 MongoDB 데이터를 백업
   command: >
-    mongodump --db mydatabase --out /var/backups/mongo/$(date +%F-%H-%M)
+    mongodump --db jsondb --out /var/backups/mongo/$(date +%F-%H-%M)
   args:
     creates: "/var/backups/mongo/$(date +%F-%H-%M)"
   # 명령어 설명:

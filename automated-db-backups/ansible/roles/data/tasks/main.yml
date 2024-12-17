@@ -3,17 +3,9 @@
 
 - name: Insert dummy data into MongoDB
   # mongo CLI를 사용하여 mydatabase에 데이터를 삽입
-  command: >
-    mongo mydatabase --eval '
-    db.test.insertMany([
-      {"name": "User1", "age": 25},
-      {"name": "User2", "age": 30},
-      {"name": "User3", "age": 35},
-      {"name": "User4", "age": 40},
-      {"name": "User5", "age": 45}
-    ])'
+  command: mongoimport --db jsondb --collection users --file user.json --jsonArray
   # 명령어 설명:
-  # - `mongo` 명령어를 통해 MongoDB에 접근
-  # - `mydatabase`라는 데이터베이스 사용
-  # - `test`라는 컬렉션에 더미 데이터를 추가
-  # - `insertMany`를 사용해 여러 개의 문서를 삽입
+  # - `--db testdb`: 삽입할 데이터베이스 이름
+  # - `--collection users`: 컬렉션 이름
+  # - `--file users.json`: JSON 파일 경로
+  # - `--jsonArray`: JSON 파일이 배열 형태인 경우
