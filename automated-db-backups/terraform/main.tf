@@ -1,7 +1,7 @@
 # provider 정의
 provider "vsphere" {
-  user           = "administrator@vsphere.local"
-  password       = "Smrc2023!"
+  user           = "<vCenter 계정명>"
+  password       = "<vCenter 계정의 Password>"
   vsphere_server = "dskcvca01.smrc.klab-a"
 
   # SSL 인증서 무시
