@@ -15,10 +15,19 @@
 # ansible-playbook -i inventory.ini setup.yml --tags "db"
 ``` 
 
+**3. DB에 더미 데이터 저장 후 백업**
+
+먼저 json 파일로 넣고 싶은 데이터 생성 (users.json)
+
 - 더미 데이터 삽입
 ```sh
 # ansible-playbook -i inventory.ini setup.yml --tags "data"
 ``` 
 
-**3. DB에 더미 데이터 저장 후 백업**
+- DB 백업
+```sh
+# ansible-playbook -i inventory.ini setup.yml --tags "backup"
+``` 
 
+
+위의 모든 과정은 Github Action에서 진행되기 위해 ./github/automated-db-backups.yml 파일에 정의해두었습니다.
