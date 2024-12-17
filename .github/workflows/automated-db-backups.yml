@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - "automated-db-backups/ansible/*"
-      - "automated-db-backups/terraform/*"
+      - "automated-db-backups/terraform/*.tf"
 
 jobs:
   terraform:
