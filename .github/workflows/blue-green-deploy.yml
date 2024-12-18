@@ -38,5 +38,5 @@ jobs:
       - name: Change Image Tag
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
         run: |
-          sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:'${IMAGE_TAG}'|g' rollout.yaml
+          sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:${{ github.run_number }}|g' rollout.yaml
 
