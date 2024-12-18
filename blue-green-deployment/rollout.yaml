@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: rnjstngks/blue-green:11
+        image: rnjstngks/blue-green:12
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -23,7 +23,7 @@ spec:
     blueGreen: 
       activeService: rollout-bluegreen-active
       previewService: rollout-bluegreen-preview
-      autoPromotionEnabled: true
+      autoPromotionEnabled: false
 
 ---
 kind: Service
