@@ -35,7 +35,7 @@ jobs:
         # 이미지 Push
       - name: Docker Push
         run: |
-          docker push rnjstngks/blud-green:${{ github.run_number }}
+          docker push rnjstngks/blue-green:${{ github.run_number }}
 
       - name: Change Deployment Yaml
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
