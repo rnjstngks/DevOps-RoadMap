@@ -19,7 +19,7 @@ jobs:
       - name: Docker Build
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment/dockerfile
         run: |
-          docker build -t rnjstngks/blud-green:${{ github.run_number }} .
+          docker build -t rnjstngks/blue-green:${{ github.run_number }} .
 
         # 코드 체크아웃
       - name: Check out Code
