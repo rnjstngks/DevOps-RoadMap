@@ -41,7 +41,7 @@ jobs:
           sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:${{ github.run_number }}|g' rollout.yaml
 
       - name: Commit and Push Changes
-        uses: ad-m/github-push-action@v1
+        uses: ad-m/github-push-action@v0.6.2
         with:
           github_token: ${{ secrets.TOKEN_GITHUB }}
           branch: main
