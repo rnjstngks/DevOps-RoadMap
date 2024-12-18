@@ -36,14 +36,3 @@ jobs:
       - name: Docker Push
         run: |
           docker push rnjstngks/blue-green:${{ github.run_number }}
-
-      - name: Change Deployment Yaml
-        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
-        run: |
-          sed -i 's|version: blue|version: green|g' deploy.yaml
-          sed -i 's|rnjstngks/blue-green:*|rnjstngks/blue-green:${{ github.run_number }}|g' deploy.yaml
-
-      - name: Change Service Yaml
-        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
-        run: |
-          sed -i 's|version: blue|version: green|g' service.yaml
