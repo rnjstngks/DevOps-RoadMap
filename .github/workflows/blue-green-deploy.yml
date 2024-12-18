@@ -8,7 +8,7 @@ on:
       - "blue-green-deployment/*"
       - "blue-green-deployment/dockerfile/*"
 jobs:
-  Image_Build:
+  Blue-Gree_Deploy:
     runs-on: self-hosted # 내 Window 환경에서 Terraform 실행
 
     steps:
@@ -22,10 +22,6 @@ jobs:
         run: |
           docker build -t rnjstngks/blud-green:${{ github.run_number }} .
 
-  Image_Push:
-    runs-on: self-hosted # 내 Window 환경에서 Terraform 실행
-
-    steps:
         # 코드 체크아웃
       - name: Check out Code
         uses: actions/checkout@v3
@@ -42,21 +38,8 @@ jobs:
         run: |
           docker push rnjstngks/blud-green:${{ github.run_number }}
 
-  Change_Yaml_file:
-    runs-on: self-hosted # 내 Window 환경에서 Terraform 실행        
-
-    steps:
       - name: Change Deployment
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
         run: |
           sed -i 's/version: blue/version: green/g' deployment.yaml
           sed -i 's/version: blue/version: green/g' deployment.yaml
-
-      - name: Run Ansible Playbook Insert Data
-        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
-        run: |
-          sed -i 's/version: blue/version: green/g' service.yaml
-
-      - name: Run Ansible Playbook DB Backup
-        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/automated-db-backups/ansible
-        run: ansible-playbook -i inventory.ini setup.yml --tags "backup"
