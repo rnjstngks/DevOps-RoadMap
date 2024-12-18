@@ -11,6 +11,12 @@ ArgoCD를 사용하여 Blue - Green 배포를 진행 해보도록 하겠습니�
 helm repo add argo https://argoproj.github.io/argo-helm
 helm install argocd argo/argo-cd --version 7.7.10
 ```
+
+**ArgoCD - rollout 설치 (Helm)**
+```sh
+helm repo add argo https://argoproj.github.io/argo-helm
+helm install argo-rollout argo/argo-rollouts
+```
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 아래 과정 부터는 Github Action을 통해 진행 합니다.
@@ -19,11 +25,7 @@ helm install argocd argo/argo-cd --version 7.7.10
 
 **2. 빌드한 이미지 Docker hub에 Push**
 
-**3. 앞서 빌드한 이미지로 POD 배포**
-
-**4. Service의 Selector에서 Green 버전으로 지정**
-
-**5. RollBack을 위해 Service의 Selector에서 Blue 버전으로 지정**
+**3. rollout.yaml 파일에서 이미지 버전 수정**
 
 위의 과정을 Github Action 통해 진행 해보도록 하겠습니다.
 

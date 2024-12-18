@@ -18,8 +18,7 @@ jobs:
         # 이미지 빌드
       - name: Docker Build
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment/dockerfile
-        run: |
-          docker build -t rnjstngks/blue-green:${{ github.run_number }} .
+        run: docker build -t rnjstngks/blue-green:${{ github.run_number }} .
 
         # 코드 체크아웃
       - name: Check out Code
@@ -34,5 +33,9 @@ jobs:
 
         # 이미지 Push
       - name: Docker Push
+        run: docker push rnjstngks/blue-green:${{ github.run_number }}
+
+      - name: Change Image Tag
         run: |
-          docker push rnjstngks/blue-green:${{ github.run_number }}
+          sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:'${IMAGE_TAG}'|g' rollout.yaml
+
