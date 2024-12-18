@@ -36,6 +36,7 @@ jobs:
         run: docker push rnjstngks/blue-green:${{ github.run_number }}
 
       - name: Change Image Tag
+        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
         run: |
           sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:'${IMAGE_TAG}'|g' rollout.yaml
 
