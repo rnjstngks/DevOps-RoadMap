@@ -40,3 +40,9 @@ jobs:
         run: |
           sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:${{ github.run_number }}|g' rollout.yaml
 
+      - name: Commit and Push Changes
+        uses: github-actions-x/commit@v2
+        with:
+          github_token: ${{ secrets.TOKEN_GITHUB }}
+          commit_message: "Update rollout.yaml with new image tag"
+          branch: main
