@@ -41,7 +41,12 @@ jobs:
           sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:${{ github.run_number }}|g' rollout.yaml
 
       - name: Commit and Push Changes
-        uses: ad-m/github-push-action@v0.6.2
-        with:
-          github_token: ${{ secrets.TOKEN_GITHUB }}
-          branch: main
+        working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
+        run: |
+          git config --global user.name "rnjstngks"
+          git config --global user.email "rnjstngks267@naver.com"
+          git add rollout.yaml
+          git commit -m "Update rollout.yaml with new image tag"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
