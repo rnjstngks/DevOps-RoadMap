@@ -45,6 +45,6 @@ jobs:
         run: |
           git config --global user.name "rnjstngks"
           git config --global user.email "rnjstngks267@naver.com"
-          git add rollot.yaml
+          git add rollout.yaml
           git commit -m "Update Image tag"
           git push orgin main
