@@ -39,6 +39,9 @@ jobs:
         working-directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
         run: |
           sed -i 's|image: rnjstngks/blue-green:.*|image: rnjstngks/blue-green:${{ github.run_number }}|g' rollout.yaml
+      
+      - name: Sleep step
+        run: sleep 10
 
       - name: Try pushing
         uses: dawidd6/action-git-try-push@v1

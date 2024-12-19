@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: rnjstngks/blue-green:14
+        image: rnjstngks/blue-green:15
         imagePullPolicy: Always
         ports:
         - containerPort: 80
