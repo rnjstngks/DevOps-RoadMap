@@ -25,7 +25,9 @@ helm install argo-rollout argo/argo-rollouts
 
 **2. 빌드한 이미지 Docker hub에 Push**
 
-**3. rollout.yaml 파일에서 이미지 버전 수정**
+**3. rollout.yaml 파일에서 이미지 태그 수정**
+
+**4. rollout.yaml git push**
 
 위의 과정을 Github Action 통해 진행 해보도록 하겠습니다.
 
