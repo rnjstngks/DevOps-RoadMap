@@ -7,7 +7,7 @@ on:
     paths:
       - "blue-green-deployment/dockerfile/*"
 jobs:
-  Blue-Gree_Deploy:
+  Blue-Green_Deploy:
     runs-on: self-hosted # 내 Window 환경에서 Terraform 실행
 
     steps:
