@@ -55,4 +55,4 @@ jobs:
           # Optional, defaults to:
           branch: main
           # Optional, defaults to:
-          tries: 3
+          tries: 20
