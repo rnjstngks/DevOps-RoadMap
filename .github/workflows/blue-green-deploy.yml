@@ -46,7 +46,7 @@ jobs:
           # Optional, used for pushing
           token: ${{ secrets.TOKEN_GITHUB }}
           # Optional, defaults to current directory
-          directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment
+          directory: /mnt/c/Users/Snetsystems/Documents/GitHub/DevOps-RoadMap/blue-green-deployment/
           # Optional, defaults to:
           remote: origin
           # Optional, defaults to:
